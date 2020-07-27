@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: Image Api
+  version: 0.1.9
+servers:
+  - url: http://localhost:5000
+    description: Optional server description, e.g. Main (production) server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+components:
+  schemas:
+    Image:
+      type: object
+      properties:
+        ImageUrl:
+          type: string
+paths:
+  /api:
+    get:
+      summary: Demo Hello World.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: A Hello world string.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+  /api/image:
+    post:
+      summary: Creates a new image.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Image'
+      responses:
+        '201':
+          description: Created
