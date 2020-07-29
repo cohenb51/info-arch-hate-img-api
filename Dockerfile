@@ -1,15 +1,18 @@
-FROM ubuntu:16.04
+FROM python:3
 
 RUN apt-get update -y && \
-    apt-get install -y python-pip python-dev && \
-    pip install --upgrade pip
+    apt-get install -y python-pip python-dev
 
-COPY . /app
+# We copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+COPY . /app
 
-CMD ["flask", "run", "-h", "0.0.0.0", "-p", "5000"]
+WORKDIR ImageApi
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]

@@ -1,12 +1,13 @@
 import configparser
 from sqlalchemy import create_engine
 from .DatabaseEngine import DatabaseEngine
+import os
 
 class MySqlEngine(DatabaseEngine):
 
     def __init__(self,username,password):
         config = configparser.ConfigParser()
-        path = 'C:\\Users\\b-coh\\school\\Katz\\ImageApi\\Shared\\Configuration\\appsettings.ini'
+        path = os.path.join("Shared", "Configuration", "appsettings.ini")
         with open(path) as f:
             config.readfp(f) 
         host = config['connectionInfo']['host']
