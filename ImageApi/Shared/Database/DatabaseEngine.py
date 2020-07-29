@@ -8,15 +8,15 @@ class DatabaseEngine(ABC):
 
 
     def ExecuteQuery(query):
-        session - Session(bind = self.engine)
+        session = Session(bind = self.engine)
         res = session.execute(query).fetchall()
         session.close()
         return res
 
     def insert(self, items):
         print(self)
-        session = Session(bind = self.engine)
+        session = Session(bind = self.engine, expire_on_commit=False)
         print(len(items))
         session.add_all(items)
         session.commit()
-        session.close
+        session.close()

@@ -6,6 +6,7 @@ import os
 class MySqlEngine(DatabaseEngine):
 
     def __init__(self,username,password):
+        print("making new connection")
         config = configparser.ConfigParser()
         path = os.path.join("Shared", "Configuration", "appsettings.ini")
         with open(path) as f:
@@ -13,8 +14,6 @@ class MySqlEngine(DatabaseEngine):
         host = config['connectionInfo']['host']
         port = config['connectionInfo']['port']
         dbName = config['connectionInfo']['dbname']
-
-
         connectionString = 'mysql+pymysql://%s:%s@%s:%s/%s' % (
         username,
         password,
@@ -23,6 +22,4 @@ class MySqlEngine(DatabaseEngine):
         dbName)
         print("connection string")
         print(connectionString)
-        sqlEngine  = create_engine(connectionString, pool_recycle=3600)
-
-        super().__init__(create_engine(connectionString))
+        super().__init__(create_engine(connectionString, pool_size=20))
