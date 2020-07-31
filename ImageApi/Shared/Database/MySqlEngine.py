@@ -22,4 +22,4 @@ class MySqlEngine(DatabaseEngine):
         dbName)
         print("connection string")
         print(connectionString)
-        super().__init__(create_engine(connectionString, pool_size=20))
+        super().__init__(create_engine(connectionString))

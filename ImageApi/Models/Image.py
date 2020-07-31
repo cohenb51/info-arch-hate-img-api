@@ -35,7 +35,3 @@ def GetImage(url):
         Width = image.width,
         HostName = host)
     return image
-
-
-
-    return Image()

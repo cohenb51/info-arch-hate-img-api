@@ -1,10 +1,11 @@
 from flask import Blueprint, request
 from Models.Image import Image, GetImage
 import json
-from Shared.Database.DatabaseFactory import DatabaseFactory
-import configparser
+from Shared.Database.DatabaseFactory import DatabaseFactory, engine
 from Shared.S3Service import S3Service
 import os
+from flask import render_template
+
 
 
 imageAccess = Blueprint('imageAccess', __name__)
@@ -16,8 +17,6 @@ def index():
 @imageAccess.route('/api/image', methods = ['POST'])
 def insert_image():
     data = json.loads(request.get_data())
-    username, password = getCreds()
-    engine = DatabaseFactory.GetDatabase("MySql", username, password)
     image = GetImage(data['ImageUrl'])
     images = []
     images.append(image)
@@ -25,12 +24,14 @@ def insert_image():
     S3Service().UploadImageFromUrl(image.Image_Id, image.Image_Url)
     return json.dumps({'success':True}), 201, {'ContentType':'application/json'} 
 
+@imageAccess.route('/api/image', methods = ['GET'])
+def get_image():
+    url = GetImageFromAws()
+    return render_template('image.html', url =url )
 
-def getCreds():
-    config = configparser.ConfigParser()
-    path = os.path.join("Shared", "Configuration", "appsettings.ini")
-    with open(path) as f:
-        config.readfp(f)
-    username = config['connectionInfo']['username']
-    password = config['connectionInfo']['password']
-    return username, password
+def GetImageFromAws():
+    key = engine.ExecuteQuery('CALL GetImage_prc')
+    url = S3Service().create_presigned_url(key[0]['Image_Id'])
+    return url
+
+
