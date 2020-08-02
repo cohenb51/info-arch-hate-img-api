@@ -1,1 +1,1 @@
-# info-arch-hate-img-api
+# Information Architecture - Hate Image Processing 
