@@ -5,7 +5,7 @@
 This paper introduces a method to detect hate speech in social media that contains hateful symbols. We first gathered hateful symbol data from different sources. This way, we created a hateful symbol dataset for this task. Then, we used this data for the training and evaluation of statistical models, which are based on state-of-the-art neural networks. Furthermore, we fine-tune pretrained descriptors that was used to define hateful symbols in our dataset. We also concluded our project by showcasing how these hateful symbols are offensive by adding expert knowledge to our trained model.** 
 
 ## Data Collection: 
-** Before we dig deeper into the project, let's quickly review high level Data flow diagram that will showcase series of steps we will take to collect data via RapidAPI/BingAPI. We will label data set and further going to feature selection of the data in SageMaker Studio to train the classification model. 
+** Before we dig deeper into the project, let's quickly review high level Data flow diagram that will showcase series of steps we will take to collect data via RapidAPI/BingAPI. We will label data set and further going to feature selection of the data in SageMaker Studio to train the classification model. **
 
 ![DataFlow_Final_Proj_Hate_Speech](https://user-images.githubusercontent.com/41594893/90071349-646fbf80-dcc3-11ea-9c81-41301d748235.jpeg)
 
