@@ -1,9 +1,13 @@
 # Information Architecture - Hate Image Processing 
 
-# Intro
+# Introduction
 **In recent years, hate speech has become a major issue in the domain of social media. 
 This paper introduces a method to detect hate speech in social media that contains hateful symbols. We first gathered hateful symbol data from different sources. This way, we created a hateful symbol dataset for this task. Then, we used this data for the training and evaluation of statistical models, which are based on state-of-the-art neural networks. Furthermore, we fine-tune pretrained descriptors that was used to define hateful symbols in our dataset. We also concluded our project by showcasing how these hateful symbols are offensive by adding expert knowledge to our trained model.** 
 
+## Data Collection: 
+** Before we dig deeper into the project, let's quickly review high level Data flow diagram that will showcase series of steps we will take to collect data via RapidAPI/BingAPI. We will label data set and further going to feature selection of the data in SageMaker Studio to train the classification model. 
+
+![DataFlow_Final_Proj_Hate_Speech](https://user-images.githubusercontent.com/41594893/90071349-646fbf80-dcc3-11ea-9c81-41301d748235.jpeg)
 
 ## Use case 1: Creating the Corpus
 *	User: Internal users to create a datastore of images
@@ -29,4 +33,13 @@ This paper introduces a method to detect hate speech in social media that contai
     *	The GET response: after processing the image, the response should return a likelihood that the image contains a hate symbol and what symbol is (swastika)
 
 ![Use_Case_3](https://user-images.githubusercontent.com/41594893/90063189-fae9b400-dcb6-11ea-9db9-3c7d3ccaa7ce.jpeg)
+
+## 	Data model (RDMS - ERD)
+![ERD_Final_Proj_Hate_Speech](https://user-images.githubusercontent.com/41594893/90071256-3db18900-dcc3-11ea-8d8f-dca9ee559146.jpeg)
+
+## 	Architecture diagrams
+![Final_Proj_Architecture](https://user-images.githubusercontent.com/41594893/90071278-45712d80-dcc3-11ea-8445-3382d02361e9.jpeg)
+
+## Resources: 
+
 
