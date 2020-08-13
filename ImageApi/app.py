@@ -24,7 +24,7 @@ swaggerui_blueprint = get_swaggerui_blueprint(
     #    'additionalQueryStringParams': {'test': "hello"}
     # }
 )
-
+application.secret_key = "seraudhlajfdoij"  
 application.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
 if __name__ == "__main__":

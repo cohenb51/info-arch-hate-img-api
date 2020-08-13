@@ -20,11 +20,15 @@ class Image(Base):
 
 
 def GetImage(url):
+    print("Here is the url")
+    print(url)
     response = requests.get(url)
     image = Img.open(BytesIO(response.content)) # will fail if not an image although should decouple at some point.
     parsed_uri = urlparse(url)
     host = parsed_uri.netloc
-    key = f'{datetime.today().strftime("%Y-%m-%d")}//{parsed_uri.netloc}//{parsed_uri.path}'
+  #  key = f'{datetime.today().strftime("%Y-%m-%d")}//{parsed_uri.netloc}//{parsed_uri.path}'
+    key = url.replace(r"/", r"-")
+    key = key.replace("https:--","")
     print(key)
     print("key")
     print(host)
