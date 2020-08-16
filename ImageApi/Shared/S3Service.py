@@ -14,7 +14,6 @@ class S3Service():
     #todo upload img from stream
 
     def create_presigned_url(self, key, expiration=3600):
-
     # Generate a presigned URL for the S3 object
         s3_client = boto3.client('s3')
         response = s3_client.generate_presigned_url('get_object',
@@ -24,6 +23,10 @@ class S3Service():
         print(key)
         print("key")
         return response
+    def GetObject(self, bucket, key):
+        s3 = boto3.resource('s3')
+        bucketO = s3.Bucket(bucket)
+        return bucketO.download_file(key, f'static/{key}')
     
 
 

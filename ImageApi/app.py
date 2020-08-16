@@ -2,6 +2,7 @@ from flask import Flask
 from Resources.blueprints import imageAccess
 from flask_swagger_ui import get_swaggerui_blueprint
 
+UPLOAD_FOLDER = 'static/uploads/'
 
 application = Flask(__name__)
 application.register_blueprint(imageAccess)
