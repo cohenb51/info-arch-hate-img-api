@@ -6,6 +6,7 @@ import json
 from Shared.Database.DatabaseFactory import DatabaseFactory, engine
 from Shared.S3Service import S3Service
 from Shared.SaltService import SaltService
+from Shared.ClassificationService import ClassificationService
 import os
 from flask import render_template, session, redirect, url_for, jsonify
 from flask_api import status
@@ -97,6 +98,31 @@ def GetImageFromAws():
     key = engine.ExecuteQuery('CALL GetImage_prc')
     url = S3Service().create_presigned_url(key[0]['Image_Id'])
     return url, key[0]['Image_Id']
+
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+def allowed_file(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@imageAccess.route('/api/classify')
+def upload_form():
+	return render_template('upload.html')
+
+@imageAccess.route('/api/getClassScore', methods=['POST'])
+def upload_image():
+    if 'file' not in request.files:
+            return json.dumps({'error':'No file provided'}), 405, {'ContentType':'application/json'} 
+    file = request.files['file']
+    if file.filename == '':
+        return json.dumps({'error':'No file provided'}), 405, {'ContentType':'application/json'} 
+    if file and allowed_file(file.filename):
+        scores =  ClassificationService().Classify(file)
+        return json.dumps(scores.scoreObjects), 200
+    else:
+        return redirect(request.url, error = "File type not allowed")
+
+        
 
 def GetUserFromDb(username, password):
     user = engine.GetUser(username)
