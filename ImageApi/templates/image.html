@@ -15,12 +15,49 @@
     <img src="{{url}}" alt="Can't be displayed"/>
 </p>
 
-<p class = aligncenter>Do you see a recognizable swastika in this photo?</p>
-
 <div class="text-center">
 	<form action="", method = "post">
-		<input name = "classification" class="btn btn-info aligncenter" type = Submit Value = 1></input>
-    <input name = "classification" class="btn btn-info aligncenter" type = Submit Value = 0></input>
-    <input name = "id" type = hidden Value = {{key}}>
-	</form>
-</div>
+    <div>
+      <p class = aligncenter>Do you see a recognizable swastika in this photo?</p>
+      <input name = "classification"  type = radio Value = 1>Yes</input>
+      <input name = "classification"  type = radio Value = 0 checked>No</input>
+      <input name = "id" type = hidden Value = {{key}}>
+    </div>
+
+    <div>
+      <hr>
+    <p class = aligncenter>Is the image hateful</p>          
+        <input name = "hatefullClassification"  type = radio Value = 1>Yes</input>
+        <input name = "hatefullClassification"  type = radio Value = 0 checked>No</input>  
+     </div>
+
+    <div>
+      <hr>
+      <p class = aligncenter>Is there text in the image</p>          
+      <input name = "IsText"  type = radio Value = 1>Yes</input>
+      <input name = "IsText"  type = radio Value = 0 checked>No</input>  
+    </div>
+
+    <div>
+      <hr>
+    <p class = aligncenter>If yes is the text hatefull</p>          
+    <input name = "IsHateText"  type = radio Value = 1>Yes</input>
+    <input name = "IsHateText"  type = radio Value = 0 checked>No</input>  
+   </div>
+
+   <div>
+    <hr>
+   <p class = aligncenter>Do you see any other hate symbols in the image.</p>          
+   <input name = "IsHateSymbol"  type = radio Value = 1>Yes</input>
+   <input name = "IsHateSymbol"  type = radio Value = 0 checked>No</input>  
+  </div>
+
+  <div>
+    <hr>
+    <p class = aligncenter>Do you see any of the symbols below?</p>          
+    <input name = "Symbol"  type = checkbox Value = 'JewishStar'>Jewish Star</input>
+    <input name = "Symbol"  type = checkbox Value = 'ConfederateFlag'>Confederate Flag</input>  
+   </div>
+
+
+    <input name = "submit"  type = submit  class="btn btn-info aligncenter">
