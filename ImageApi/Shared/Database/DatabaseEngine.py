@@ -37,7 +37,6 @@ class DatabaseEngine(ABC):
             session.commit()
             session.close()
             print('got all images')
-            print(images[0].Image_Id)
             return images
         except:
             session.close()
@@ -54,15 +53,11 @@ class DatabaseEngine(ABC):
             session.close()
             raise 
 
-    def InsertClassificationScore(self, score, url, user):
+    def InsertClassificationScore(self, IsSwastika, IsHateful, IsText, IsHateText, IsHateSymbol, Symbol, id, username):
         try:
             conn = self.engine.raw_connection()
             cursor = conn.cursor()
-            cursor.callproc("ScoreImage_prc", [url, score, 1, user])
-            results = list(cursor.fetchall())
-            print("got results")
-            print(url)
-            print(results)
+            cursor.callproc("ScoreImage_prc", [IsSwastika, IsHateful, IsText, IsHateText, IsHateSymbol, Symbol, id, username])
             cursor.close()
             conn.commit()
         finally:

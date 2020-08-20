@@ -13,14 +13,19 @@ import urllib.parse
 Base = declarative_base()
 
 class Classification_Score_Model(Base):
-    __tablename__ = "Image_Classification_Score_tbl"
-    Classification_Ccore_Id = Column(String, primary_key = True)
-    Image_Id = Column(String)
-    Username = Column(String)
-    Score = Column(Integer)
+    __tablename__ = "Image_Classification_Scores_tbl"
+    Num = Column(Integer, primary_key = True)
+    key = Column(String)
+    IsHatefull = Column(Integer)
+    HasSwastika = Column(String)
+    HasOtherHateSymbol =Column(String)
+    HateImage = Column(String)
+    HasText = Column(String)
+    HasHatefullText = Column(String)
+    HasOtherHateSymbol = Column(String)
 
     def as_dict(self):
        _dict =  {c.name: getattr(self, c.name) for c in self.__table__.columns}
-       tmp = _dict['Image_Id']
-       _dict['Image_Id'] ='https://info-arch-hate-images-corp.s3.amazonaws.com/' +  urllib.parse.quote(tmp)
+       tmp = _dict['key']
+       _dict['url'] ='https://info-arch-hate-images-corp.s3.amazonaws.com/' +  urllib.parse.quote(tmp)
        return _dict

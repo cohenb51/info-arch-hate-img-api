@@ -19,7 +19,7 @@ components:
       properties:
         UserName:
           type: string
-        password:
+        Password:
           type: string
 paths:
   /api:
@@ -80,12 +80,6 @@ paths:
   /api/logout:
     post:
       summary: Logout.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
       responses:
         '200':
           description: OK

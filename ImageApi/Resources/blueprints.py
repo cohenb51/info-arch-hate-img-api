@@ -39,20 +39,28 @@ def get_image():
     url = GetImageFromAws()
     return render_template('image.html', url =url[0], key=url[1] )
 
-@imageAccess.route('/api/unclassifiedimage', methods = ['POST'])
+@imageAccess.route('/api/unclassifiedimage', methods = ['POST']) ##
 def post_image():
-    print(type(request.form['id']))
-    print(request.form['id'])
-    print('form')
+
     if 'username' not in session:
         return redirect(url_for('imageAccess.login_screen'))
 
-    post_score_to_db(request.form['classification'], request.form['id'], session['username'] )
+    post_score_to_db(
+        request.form['classification'],
+        request.form['hatefullClassification'],
+        request.form['IsText'],
+        request.form['IsHateText'],
+        request.form['IsHateSymbol'],
+        #request.form['Symbol'],
+        'test',
+        request.form['id'], 
+        session['username'])
+
     url = GetImageFromAws()
     return redirect(url_for('imageAccess.get_image'))
 
-def post_score_to_db(score, url, username):
-    engine.InsertClassificationScore(score, url, username)
+def post_score_to_db(IsSwastika, IsHateful, IsText, IsHateText, IsHateSymbol, Symbol, id, username):
+    engine.InsertClassificationScore(IsSwastika, IsHateful, IsText, IsHateText, IsHateSymbol, Symbol, id, username)
 
 
 
