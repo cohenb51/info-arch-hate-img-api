@@ -101,6 +101,12 @@ def GetAllImages():
     images = engine.GetAllImages()
     dicts = list(map(lambda x: x.as_dict(), images))
     return (jsonify(dicts)), 200, {'ContentType':'application/json'}
+
+@imageAccess.route('/home', methods = ['Get'])
+def home():
+    return render_template("home.html")
+
+
     
 def GetImageFromAws():
     key = engine.ExecuteQuery('CALL GetImage_prc')
@@ -114,11 +120,11 @@ def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @imageAccess.route('/api/classify')
-def upload_form():
+def classify():
 	return render_template('upload.html')
 
 @imageAccess.route('/api/getClassScore', methods=['POST'])
-def upload_image():
+def getClassScore():
     if 'file' not in request.files:
             return json.dumps({'error':'No file provided'}), 405, {'ContentType':'application/json'} 
     file = request.files['file']

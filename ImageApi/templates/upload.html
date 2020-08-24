@@ -1,7 +1,29 @@
 <!doctype html>
+<head>
 <title>Classify an image</title>
-<h2>Select a file to Classify</h2>
-<form method="post" action="getClassScore" enctype="multipart/form-data">
+<link media="screen" rel="stylesheet" type="text/css" href="/static/bootstrap.min.css"/>
+<link media="screen" rel="stylesheet" type="text/css" href="/static/nav.css">  </head>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-light">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href={{url_for('imageAccess.home')}}>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href={{url_for('imageAccess.login')}}>Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href={{url_for('imageAccess.classify')}}>Classify</a>
+          </li>
+        </ul>
+    </nav>
+
+    <Center>
+    
+    <h2>Select a file to Classify</h2>
+
+    </ul><form method="post" action="getClassScore" enctype="multipart/form-data">
     <dl>
 		<p>
 			<input type="file" name="file" autocomplete="off" required>
@@ -11,3 +33,6 @@
 		<input type="submit" value="Submit">
 	</p>
 </form>
+
+</Center>
+</body>
