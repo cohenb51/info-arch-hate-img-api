@@ -14,6 +14,13 @@ components:
       properties:
         ImageUrl:
           type: string
+    User:
+      type: object
+      properties:
+        UserName:
+          type: string
+        Password:
+          type: string
 paths:
   /api:
     get:
@@ -40,3 +47,39 @@ paths:
       responses:
         '201':
           description: Created
+  /api/unclassifiedimage:
+    get:
+      summary: Get an unclassified image.
+      responses:
+        '200':
+          description: O
+  /api/register:
+    post:
+      summary: Creates a user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Created
+  /api/login:
+    post:
+      summary: Login.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: OK
+  /api/logout:
+    post:
+      summary: Logout.
+      responses:
+        '200':
+          description: OK

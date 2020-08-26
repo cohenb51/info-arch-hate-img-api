@@ -2,6 +2,7 @@ from flask import Flask
 from Resources.blueprints import imageAccess
 from flask_swagger_ui import get_swaggerui_blueprint
 
+UPLOAD_FOLDER = 'static/uploads/'
 
 application = Flask(__name__)
 application.register_blueprint(imageAccess)
@@ -24,7 +25,7 @@ swaggerui_blueprint = get_swaggerui_blueprint(
     #    'additionalQueryStringParams': {'test': "hello"}
     # }
 )
-
+application.secret_key = "seraudhlajfdoij"  
 application.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
 if __name__ == "__main__":
