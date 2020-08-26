@@ -6,8 +6,8 @@ from PIL import Image as Img
 import os
 
 models = []
-testModelName = 'primitive_model.h5'
-modelFile = S3Service().GetObject('info-arch-hate-images-train-stage', 'primitive_model2.h5')
+testModelName = 'primitive_model3.h5'
+modelFile = S3Service().GetObject('info-arch-hate-images-train-stage', 'primitive_model3.h5')
 print(os.listdir('static'))
 models.append(load_model(f'static/{testModelName}'))
 
