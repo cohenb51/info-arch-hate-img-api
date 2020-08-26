@@ -3,73 +3,70 @@
   <head>
     <meta charset="UTF-8">
     <title>Hate Image Classification</title>
-	<link rel="stylesheet" type="text/css" href="/static/classify.css" media="screen"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/home.css"/>
   </head>
   <body>
-
-  </body>
-</html>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-    </ul>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-sm bg-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href={{url_for('imageAccess.home')}}>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={{url_for('imageAccess.login')}}>Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={{url_for('imageAccess.classify')}}>Get Score</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={{url_for('imageAccess.get_image')}}>Rate images</a>
+        </li>
+      </ul>
+        </nav>
 <p class="aligncenter">
-    <img src="{{url}}" alt="Can't be displayed"/>
+    <img id = "classifysrc" src="{{url}}" alt="Can't be displayed"/>
 </p>
 
-<div class="text-center">
+<div class="text-center" lass="form-group">
 	<form action="", method = "post">
     <div>
       <p class = aligncenter>Do you see a recognizable swastika in this photo?</p>
-      <input name = "classification"  type = radio Value = 1>Yes</input>
-      <input name = "classification"  type = radio Value = 0 checked>No</input>
+      <input name = "classification"  type = radio Value = 1>&nbspYes&nbsp&nbsp&nbsp&nbsp</input>
+      <input name = "classification"  type = radio Value = 0 checked>&nbspNo</input>
       <input name = "id" type = hidden Value = {{key}}>
     </div>
 
     <div>
       <hr>
     <p class = aligncenter>Is the image hateful</p>          
-        <input name = "hatefullClassification"  type = radio Value = 1>Yes</input>
-        <input name = "hatefullClassification"  type = radio Value = 0 checked>No</input>  
+        <input name = "hatefullClassification"  type = radio Value = 1>&nbspYes&nbsp&nbsp&nbsp&nbsp</input>
+        <input name = "hatefullClassification"  type = radio Value = 0 checked>&nbspNo</input>  
      </div>
 
     <div>
       <hr>
       <p class = aligncenter>Is there text in the image</p>          
-      <input name = "IsText"  type = radio Value = 1>Yes</input>
-      <input name = "IsText"  type = radio Value = 0 checked>No</input>  
+      <input name = "IsText"  type = radio Value = 1>&nbspYes&nbsp&nbsp&nbsp&nbsp</input>
+      <input name = "IsText"  type = radio Value = 0 checked>&nbspNo</input>  
     </div>
 
     <div>
       <hr>
     <p class = aligncenter>If yes is the text hatefull</p>          
-    <input name = "IsHateText"  type = radio Value = 1>Yes</input>
-    <input name = "IsHateText"  type = radio Value = 0 checked>No</input>  
+    <input name = "IsHateText"  type = radio Value = 1>&nbspYes&nbsp&nbsp&nbsp&nbsp</input>
+    <input name = "IsHateText"  type = radio Value = 0 checked>&nbspNo</input>  
    </div>
 
    <div>
     <hr>
    <p class = aligncenter>Do you see any other hate symbols in the image.</p>          
-   <input name = "IsHateSymbol"  type = radio Value = 1>Yes</input>
-   <input name = "IsHateSymbol"  type = radio Value = 0 checked>No</input>  
+   <input name = "IsHateSymbol"  type = radio Value = 1>&nbspYes&nbsp&nbsp&nbsp&nbsp</input>
+   <input name = "IsHateSymbol"  type = radio Value = 0 checked>&nbspNo</input>  
   </div>
-
-  <div>
-    <hr>
-    <p class = aligncenter>Do you see any of the symbols below?</p>          
-    <input name = "Symbol"  type = checkbox Value = 'JewishStar'>Jewish Star</input>
-    <input name = "Symbol"  type = checkbox Value = 'ConfederateFlag'>Confederate Flag</input>  
-   </div>
+  <hr>
 
 
     <input name = "submit"  type = submit  class="btn btn-info aligncenter">
+
+    <p></p>
+    <p></p>
