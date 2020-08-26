@@ -12,7 +12,7 @@ These are the steps we took in order to create our platform.
 ![DataFlow_Final_Proj_Hate_Speech](https://user-images.githubusercontent.com/41594893/90071349-646fbf80-dcc3-11ea-9c81-41301d748235.jpeg)
 ## RDS Model
 This relational model is used to store the images, and classification scores
-![ERD_Final_Proj_Hate_Speech](https://user-images.githubusercontent.com/41594893/90071256-3db18900-dcc3-11ea-8d8f-dca9ee559146.jpeg)
+![ERD_Final_Proj_Hate_Speech](https://user-images.githubusercontent.com/41594893/91247731-f0043a00-e720-11ea-8eed-26bc877ed9df.jpeg)
 Note that we chose to use a denormalized model for ease of access although in order to create multiple types of classifications this may need to be normalized.
 The image_tbl stores the key of the image and the actual image is store on s3.
 ## Use case 1: Creating the Corpus
